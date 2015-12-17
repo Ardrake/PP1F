@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGA"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="500">
     <Grid>
-        
+        <Label x:Name="label" Content="Guichet Automatique" Margin="10,25,10,0" VerticalAlignment="Top" FontSize="24" HorizontalAlignment="Center"/>
+        <Grid Margin="10,100,10,10" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="68,2,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            <Label x:Name="label1" Content="Usager :" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Label x:Name="label2" Content="NIP: " HorizontalAlignment="Left" Margin="18,31,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.775,-3.906"/>
+            <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="68,31,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            <Button x:Name="btn_login" Content="Login" HorizontalAlignment="Center" Margin="10,71,10,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.371,0.6"/>
+        </Grid>
+        <Button x:Name="button" Content="Menu Client" HorizontalAlignment="Left" Margin="140,245,0,0" VerticalAlignment="Top" Width="76" Click="button_Click"/>
+        <Button x:Name="button1" Content="Menu Admin" HorizontalAlignment="Left" Margin="278,245,0,0" VerticalAlignment="Top" Width="74" Click="button1_Click"/>
+
+
     </Grid>
 </Window>
