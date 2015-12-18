@@ -22,6 +22,13 @@ namespace SGA
         public MenuAdmin()
         {
             InitializeComponent();
+            //MainWindow.menuAdmin.Left = MainWindow.getPos("Left");
+            //MainWindow.menuAdmin.Top = MainWindow.getPos("Top");
+        }
+
+        private void button_Copy3_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

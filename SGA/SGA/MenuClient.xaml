@@ -11,7 +11,7 @@
         <Button x:Name="button" Content="Retrait en espèces" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Width="147"/>
         <Button x:Name="button_Copy" Content="Dépot" HorizontalAlignment="Center" Margin="0,137,0,0" VerticalAlignment="Top" Width="147"/>
         <Button x:Name="button_Copy1" Content="Paiement et virements" HorizontalAlignment="Center" Margin="0,164,0,0" VerticalAlignment="Top" Width="147"/>
-        <Button x:Name="button_Copy2" Content="Quitter" HorizontalAlignment="Center" Margin="0,191,0,0" VerticalAlignment="Top" Width="147"/>
+        <Button x:Name="button_Copy2" Content="Quitter" HorizontalAlignment="Center" Margin="0,191,0,0" VerticalAlignment="Top" Width="147" Click="button_Copy2_Click"/>
 
     </Grid>
 </Window>

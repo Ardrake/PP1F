@@ -22,8 +22,13 @@ namespace SGA
         public MenuClient()
         {
             InitializeComponent();
-            Application.Current.MainWindow.Left = MainWindow.getPos("Left");
-            Application.Current.MainWindow.Top = MainWindow.getPos("Top");
+            //MainWindow.menuClient.Left = MainWindow.getPos("Left");
+            //MainWindow.menuClient.Top = MainWindow.getPos("Top");
+        }
+
+        private void button_Copy2_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
