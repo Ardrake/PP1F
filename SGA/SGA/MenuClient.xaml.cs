@@ -30,5 +30,29 @@ namespace SGA
         {
             this.Close();
         }
+
+        private void retrait_button_Click(object sender, RoutedEventArgs e)
+        {
+            SelectionTransaction.selectedTransac = "Retrait";
+            Retrait menuRetrait = new Retrait();
+            menuRetrait.Left = Application.Current.MainWindow.Left;
+            menuRetrait.Top = Application.Current.MainWindow.Top;
+            menuRetrait.Height = Application.Current.MainWindow.Height;
+            menuRetrait.Width = Application.Current.MainWindow.Width;
+            menuRetrait.ShowDialog();
+        }
+
+        private void depot_button_Click(object sender, RoutedEventArgs e)
+        {
+            SelectionTransaction.selectedTransac = "Dépot";
+            Retrait menuDepot = new Retrait();
+            menuDepot.Left = Application.Current.MainWindow.Left;
+            menuDepot.Top = Application.Current.MainWindow.Top;
+            menuDepot.Height = Application.Current.MainWindow.Height;
+            menuDepot.Width = Application.Current.MainWindow.Width;
+            menuDepot.ShowDialog();
+        }
+
+
     }
 }

@@ -1,0 +1,16 @@
+﻿<Window x:Class="SGA.Retrait"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SGA"
+        mc:Ignorable="d"
+        Title="Retrait" Height="300" Width="500">
+    <Grid>
+        <Button x:Name="button" Content="Cheque" HorizontalAlignment="Center" Margin="0,114,0,0" VerticalAlignment="Top" Width="100" Click="cheque_button_Click"/>
+        <Button x:Name="button_Copy" Content="Épargne" HorizontalAlignment="Center" Margin="0,139,0,0" VerticalAlignment="Top" Width="100" Click="eparge_button_Click"/>
+        <Label x:Name="label" Content="Veuillez choisir un compte." HorizontalAlignment="Center" Margin="0,74,1,0" VerticalAlignment="Top"/>
+        <Button x:Name="button_Copy1" Content="Annulé" HorizontalAlignment="Center" Margin="0,181,0,0" VerticalAlignment="Top" Width="100" Click="button_Click"/>
+
+    </Grid>
+</Window>

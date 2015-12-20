@@ -56,6 +56,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Program.cs" />
+    <Compile Include="Retrait.xaml.cs">
+      <DependentUpon>Retrait.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RetraitMontant.xaml.cs">
+      <DependentUpon>RetraitMontant.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Transaction.cs" />
     <Compile Include="TypeTransaction.cs" />
     <Page Include="MainWindow.xaml">
@@ -78,6 +84,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MenuClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Retrait.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RetraitMontant.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

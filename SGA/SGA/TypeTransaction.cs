@@ -10,4 +10,15 @@ namespace SGA
     {
         Retrait, Depot, Transfert
     }
+
+    public static class SelectionCompte
+    {
+        public static string selectedCompte = "";
+    }
+
+    public static class SelectionTransaction
+    {
+        public static string selectedTransac = "";
+    }
+
 }

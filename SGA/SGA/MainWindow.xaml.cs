@@ -33,7 +33,7 @@ namespace SGA
             Application.Current.MainWindow.Top = pos_top_ecran;
         }
 
-  
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
             MenuClient menuClient = new MenuClient();
@@ -57,4 +57,6 @@ namespace SGA
 
 
     }
+
+
 }
