@@ -26,7 +26,7 @@ namespace SGA
             //MainWindow.menuClient.Top = MainWindow.getPos("Top");
         }
 
-        private void button_Copy2_Click(object sender, RoutedEventArgs e)
+        private void button_Quitter(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
@@ -53,6 +53,15 @@ namespace SGA
             menuDepot.ShowDialog();
         }
 
-
+        private void button_paiementEtVirement(object sender, RoutedEventArgs e)
+        {
+            SelectionTransaction.selectedTransac = "Paiement";
+            PaiementEtVirement menuPaiement = new PaiementEtVirement();
+            menuPaiement.Left = Application.Current.MainWindow.Left;
+            menuPaiement.Top = Application.Current.MainWindow.Top;
+            menuPaiement.Height = Application.Current.MainWindow.Height;
+            menuPaiement.Width = Application.Current.MainWindow.Width;
+            menuPaiement.ShowDialog();
+        }
     }
 }

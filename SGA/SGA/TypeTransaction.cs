@@ -21,4 +21,11 @@ namespace SGA
         public static string selectedTransac = "";
     }
 
+    public static class DataGuichet
+    {
+        public static List<Compte> listeComptes = new List<Compte>();
+        public static List<Client> listeClients = new List<Client>();
+        public static List<Transaction> listeTransactions = new List<Transaction>();
+    }
+    
 }

@@ -20,8 +20,11 @@ namespace SGA
     /// </summary>
     public partial class MainWindow : Window
     {
+       
+
         public MainWindow()
         {
+            Program.OuvrirFichier("Clients.txt");
             InitializeComponent();
             double largeur_ecran = SystemParameters.PrimaryScreenWidth;
             double hauteur_ecran = SystemParameters.PrimaryScreenHeight;
@@ -55,7 +58,42 @@ namespace SGA
             menuAdmin.ShowDialog();
         }
 
+        private void button_Login(object sender, RoutedEventArgs e)
+        {
+            string nomClient = textboxNomClient.Text;
+            string nipClient = textboxPassword.Text;
 
+            Client clientLogin = DataGuichet.listeClients.Find(x => x.NomClient == nomClient);
+            if (clientLogin == null)
+            {
+                MessageBox.Show("Client non trouvé");
+            }
+            else if (clientLogin.NIP == nipClient)
+            {
+                if (clientLogin.NomClient == "Korben Dallas")
+                {
+                    MenuAdmin menuAdmin = new MenuAdmin();
+                    menuAdmin.Left = Application.Current.MainWindow.Left;
+                    menuAdmin.Top = Application.Current.MainWindow.Top;
+                    menuAdmin.Height = Application.Current.MainWindow.Height;
+                    menuAdmin.Width = Application.Current.MainWindow.Width;
+                    menuAdmin.ShowDialog();
+                }
+                else
+                {
+                    MenuClient menuClient = new MenuClient();
+                    menuClient.Left = Application.Current.MainWindow.Left;
+                    menuClient.Top = Application.Current.MainWindow.Top;
+                    menuClient.Height = Application.Current.MainWindow.Height;
+                    menuClient.Width = Application.Current.MainWindow.Width;
+                    menuClient.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Login incorrect");
+            }
+        }
     }
 
 

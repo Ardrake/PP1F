@@ -24,6 +24,8 @@ namespace SGA
                     string LeNom = tab[0];
                     string LePin = tab[1];
                     // Ajouter client dans tableau des clients
+                    Client newClient = new Client(LeNom, LePin);
+                    DataGuichet.listeClients.Add(newClient);
                 }
                 if (fname == "Comptes.txt")
                 {

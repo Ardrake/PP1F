@@ -8,11 +8,11 @@
         Title="MenuAdmin" Height="350" Width="500">
     <Grid>
         <Label x:Name="label" Content="Veuillez choisir une opération" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="button" Content="Paiement des intérêts" HorizontalAlignment="Center" Margin="0,111,0,0" VerticalAlignment="Top" Width="185"/>
-        <Button x:Name="button_Copy" Content="Dépôt guichet" HorizontalAlignment="Center" Margin="54,138,54,0" VerticalAlignment="Top" Width="184"/>
-        <Button x:Name="button_Copy1" Content="Impression des rapports" HorizontalAlignment="Center" Margin="53,165,54,0" VerticalAlignment="Top" Width="185"/>
-        <Button x:Name="button_Copy2" Content="Mettre guichet hors service" HorizontalAlignment="Center" Margin="54,192,54,0" VerticalAlignment="Top" Width="184"/>
-        <Button x:Name="button_Copy3" Content="Quitter" HorizontalAlignment="Center" Margin="53,219,54,0" VerticalAlignment="Top" Width="185" Click="button_Copy3_Click"/>
+        <Button x:Name="PaiementInteret" Content="Paiement des intérêts" HorizontalAlignment="Center" Margin="0,111,0,0" VerticalAlignment="Top" Width="185" Click="button_PaiementInteret"/>
+        <Button x:Name="DepotGuichet" Content="Dépôt guichet" HorizontalAlignment="Center" Margin="54,138,54,0" VerticalAlignment="Top" Width="184" Click="button_depotGuichet"/>
+        <Button x:Name="ImpressionRapport" Content="Impression des rapports" HorizontalAlignment="Center" Margin="53,165,54,0" VerticalAlignment="Top" Width="185" Click="button_Rapport"/>
+        <Button x:Name="HorsService" Content="Mettre guichet hors service" HorizontalAlignment="Center" Margin="54,192,54,0" VerticalAlignment="Top" Width="184" Click="button_MettreHorsService"/>
+        <Button x:Name="Quitter" Content="Quitter" HorizontalAlignment="Center" Margin="53,219,54,0" VerticalAlignment="Top" Width="185" Click="button_Quitter"/>
 
     </Grid>
 </Window>

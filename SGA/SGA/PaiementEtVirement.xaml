@@ -1,0 +1,26 @@
+﻿<Window x:Class="SGA.PaiementEtVirement"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SGA"
+        mc:Ignorable="d"
+        Title="PaiementEtVirement" Height="350" Width="500">
+    <Grid>
+        <ComboBox x:Name="compteSource" HorizontalAlignment="Left" Margin="46,124,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Chèque" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Épargne" HorizontalAlignment="Left" Width="118"/>
+        </ComboBox>
+        <ComboBox x:Name="compteCible" HorizontalAlignment="Left" Margin="211,124,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Chèque" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Épargne" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Facture" HorizontalAlignment="Left" Width="118"/>
+        </ComboBox>
+        <TextBox x:Name="montant" HorizontalAlignment="Left" Height="23" Margin="364,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"/>
+        <Button x:Name="Annulé" Content="Annulé" HorizontalAlignment="Left" Margin="407,271,0,0" VerticalAlignment="Top" Width="75" Click="Annulé_Click"/>
+        <Button x:Name="Accepter" Content="Accepté" HorizontalAlignment="Left" Margin="407,232,0,0" VerticalAlignment="Top" Width="75" Click="Accepter_Click"/>
+        <Label x:Name="label" Content="Compte source / de" HorizontalAlignment="Left" Margin="46,89,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy" Content="Compte cible / à" HorizontalAlignment="Left" Margin="211,89,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy1" Content="Montant" HorizontalAlignment="Left" Margin="364,89,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
