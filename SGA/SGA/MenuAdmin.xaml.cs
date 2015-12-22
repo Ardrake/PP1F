@@ -32,6 +32,7 @@ namespace SGA
 
         private void button_MettreHorsService(object sender, RoutedEventArgs e)
         {
+            Program.SauvegarderFichier("Comptes.txt");
             Environment.Exit(1);
         }
 
@@ -48,8 +49,37 @@ namespace SGA
             double hauteur_main = Application.Current.MainWindow.Height;
             int pos_left_ecran = ((int)largeur_ecran / 2) - ((int)largeur_main / 2) + 50;
             int pos_top_ecran = ((int)hauteur_ecran / 2) - ((int)hauteur_main / 2) + 50;
+            int valInput = 0;
 
             string input = Interaction.InputBox("Montant du dépot (Minimum de 5000$)", "Dépot Guichet", "5000", pos_left_ecran, pos_top_ecran);
+
+            try
+            {
+                valInput = int.Parse(input);
+            }
+            catch
+            {
+                MessageBox.Show("Caractere non valide, veuillez entré un nombre");
+            }
+
+            if (valInput % 5000 == 0 && valInput >= 5000 && valInput <= 20000)
+            {
+                if (DataGuichet.totalGuichet + valInput <= 20000)
+                {
+                    DataGuichet.totalGuichet += valInput;
+                    MessageBox.Show("Argent déposer dans le guichet - Balance de " + DataGuichet.totalGuichet + "$");
+                    Program.SauvegarderFichier("Comptes.txt");
+                }
+                else
+                {
+                    MessageBox.Show("Transaction non possible excede la limite de 20 000$");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Doit etre un multiple de 5000$");
+            }
+
 
         }
 
@@ -59,6 +89,30 @@ namespace SGA
             if (paiementInteret == MessageBoxResult.Yes)
             {
                 MessageBox.Show("Paiement des interets");
+
+                decimal tauxInteret = (decimal)0.01;
+                Transaction newTransac;
+
+                foreach (Compte item in DataGuichet.listeComptes)
+                {
+                    if (item.GetType() == typeof(Epargne))
+                    {
+                        Compte compteTransac = item;
+                        decimal interet = decimal.Round((compteTransac.Balance * tauxInteret), 2);
+                        compteTransac.Depot(interet);
+                        newTransac = new Transaction(DateTime.Now, TypeTransaction.Interet, compteTransac, interet, compteTransac.Balance);
+                        DataGuichet.listeTrasanction.Add(newTransac);
+                    }
+                }
+
+                foreach (Transaction item in DataGuichet.listeTrasanction)
+                {
+                    Compteur.compteurTransac = Program.GetCompteurValue("compteurTransac.dat");
+                    Program.EcrireTransac(item);
+                    Program.SetCompteurValue("compteurTransac.dat", Compteur.compteurTransac + 1);
+                }
+                DataGuichet.listeTrasanction.Clear();
+
             }
         }
     }

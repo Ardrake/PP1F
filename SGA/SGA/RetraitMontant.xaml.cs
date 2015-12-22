@@ -47,8 +47,6 @@ namespace SGA
                 MessageBox.Show("Caractere non valide, veuillez entré un nombre");
             }
 
-            decimal laNouvelleBalance = 0;
-
             if (SelectionCompte.selectedCompteString == "Cheque")
             {
                 compteTransac = ClientCourant.compteCheque;
@@ -113,6 +111,7 @@ namespace SGA
                 {
                     compteTransac.Retrait(montantRetrait);
                     newTransac = new Transaction(DateTime.Now, TypeTransaction.Retrait, compteTransac, montantRetrait, compteTransac.Balance);
+                    DataGuichet.totalGuichet -= (int)montantRetrait;
                 }
                 if (SelectionTransaction.selectedTransac == "Dépot")
                 {

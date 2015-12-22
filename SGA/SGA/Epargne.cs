@@ -8,15 +8,16 @@ namespace SGA
 {
     class Epargne : Compte
     {
-        private DateTime _dernierRetrait;
+        public decimal _Interet;
 
-        public decimal Frais { get; private set; }
-        public decimal Interet { get; private set; }
-
-        public Epargne(string numeroDeClient, string numeroDeCompte, decimal balance, decimal interet, decimal frais) : base(numeroDeClient, numeroDeCompte, balance)
+        public decimal Interet
         {
-            Frais = frais;
-            Interet = interet;
+            get { return _Interet; }
+        }
+
+        public Epargne(string numeroDeClient, string numeroDeCompte, decimal balance, decimal interet) : base(numeroDeClient, numeroDeCompte, balance)
+        {
+            _Interet = interet;
         }
     }
 }

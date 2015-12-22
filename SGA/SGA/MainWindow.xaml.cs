@@ -24,8 +24,14 @@ namespace SGA
 
         public MainWindow()
         {
+            // initialise les clients
             Program.OuvrirFichier("Clients.txt");
+
+            // initialise les comptes
             Program.OuvrirFichier("Comptes.txt");
+
+            // Dépose 5000$ dans le guichet si la limite le permet
+            Program.DepotGuichet();
             
 
             InitializeComponent();

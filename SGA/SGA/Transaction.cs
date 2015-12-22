@@ -22,7 +22,7 @@ namespace SGA
             TypeTransaction = transactionType;
             TransactionCompte = transactionCompte;
 
-            if (transactionType == TypeTransaction.Retrait)
+            if (transactionType == TypeTransaction.Retrait || transactionType == TypeTransaction.Facture || transactionType == TypeTransaction.TransfertRetrait)
             {
                 Montant = Montant * -1;
             }

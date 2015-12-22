@@ -8,7 +8,7 @@ namespace SGA
 {
     public enum TypeTransaction
     {
-        Retrait, Depot, Transfert
+        Retrait, Depot, TransfertRetrait, TransfertDepot, Facture, Frais, Interet
     }
 
     public static class SelectionCompte
@@ -40,6 +40,7 @@ namespace SGA
         public static int totalGuichet = 0;
         public static List<Compte> listeComptes = new List<Compte>();
         public static List<Client> listeClients = new List<Client>();
+        public static List<Transaction> listeTrasanction = new List<Transaction>();
     }
     
 }

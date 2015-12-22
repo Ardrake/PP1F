@@ -10,6 +10,15 @@ namespace SGA
     public class Program
     {
 
+        public static void DepotGuichet(int montant = 5000)
+        {
+            if (DataGuichet.totalGuichet + montant <= 20000)
+            {
+                DataGuichet.totalGuichet += montant;
+            } 
+        }
+
+
         public static void EcrireTransac(Transaction transac)
         {
             string datetransac = DateTime.Now.ToShortDateString();
@@ -21,7 +30,6 @@ namespace SGA
                     sw.WriteLine("Fichier des transaction pour le " + datetransac);
                 }
             }
-
             using (StreamWriter sw = File.AppendText(fname))
             {
                 sw.WriteLine(DateTime.Now.ToShortDateString() + ";" + DateTime.Now.ToShortTimeString() + ";" + Compteur.compteurTransac + ";" + transac.TypeTransaction + ";" + transac.TransactionCompte.NumeroDeCompte + ";" + transac.Montant + ";" + transac.Balance);
@@ -41,6 +49,7 @@ namespace SGA
             return compteur;
         }
 
+
         public static void SetCompteurValue(string fname, int valeur)
         {
             if (File.Exists(fname))
@@ -53,7 +62,41 @@ namespace SGA
                 sw.WriteLine(valeur);
             }
         }
-                
+
+
+        public static void SauvegarderFichier(string fname)
+        {
+            
+            if (File.Exists(fname))
+            {
+                File.Delete(fname);
+            }
+            //B; 0000; 00000; 15000
+            //C; D001; 10001; 457.98
+
+            using (StreamWriter sw = File.CreateText(fname))
+            {
+                sw.WriteLine("B;0000;00000;"+DataGuichet.totalGuichet);
+            }
+
+            foreach (Compte item in DataGuichet.listeComptes)
+            {
+                using (StreamWriter sw = File.AppendText(fname))
+                {
+                    string typecompte = "";
+                    if (item.GetType() == typeof(Epargne))
+                    {
+                        typecompte = "E";
+                    }
+                    if (item.GetType() == typeof(Cheque))
+                    {
+                        typecompte = "C";
+                    }
+                    sw.WriteLine(typecompte + ";" + item.NumeroDeClient + ";" + item.NumeroDeCompte + ";" + item.Balance);
+                }
+            }
+        }
+
 
         public static void OuvrirFichier(string fname)
         {
@@ -83,12 +126,12 @@ namespace SGA
                     // Ajouter Compte dans tableau des comptes
                     if (LeType == "E")
                     {
-                        Epargne newEpargne = new Epargne(LeClient, LeNumeroDeCompte, LaBalance, (decimal)0.01, (decimal)1.25);
+                        Epargne newEpargne = new Epargne(LeClient, LeNumeroDeCompte, LaBalance, (decimal)0.01);
                         DataGuichet.listeComptes.Add(newEpargne);
                     }
                     if (LeType == "C")
                     {
-                        Cheque newCheque = new Cheque(LeClient, LeNumeroDeCompte, LaBalance, 0, (decimal)1.25);
+                        Cheque newCheque = new Cheque(LeClient, LeNumeroDeCompte, LaBalance, (decimal)1.25);
                         DataGuichet.listeComptes.Add(newCheque);
                     }
                     if (LeType == "B")
@@ -96,10 +139,8 @@ namespace SGA
                         DataGuichet.totalGuichet = (int)LaBalance;
                     }
                 }
-
-
             }
+            sr.Close();
         }
-
     }
 }
