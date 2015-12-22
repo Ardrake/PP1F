@@ -18,9 +18,9 @@
         <Button x:Name="button_Copy7" Content="400 $" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Left" Click="button_Click_400"/>
         <Button x:Name="button_Copy8" Content="500 $" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Left" Click="button_Click_500"/>
         <Button x:Name="button1" Content="Annulé" HorizontalAlignment="Left" Margin="382,241,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right" Click="annuler_button_Click"/>
-        <Button x:Name="button2" Content="Autre montant" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Left"/>
+        <Button x:Name="button2" Content="Autre montant" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Left" Click="button2_Click"/>
         <Label x:Name="label" Content="Veuillez choisir un montant." HorizontalAlignment="Center" Margin="0,73,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Center" Height="23" Margin="0,130,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Center" Height="23" Margin="0,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="button1_Copy" Content="Accepter" HorizontalAlignment="Left" Margin="382,274,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right" Click="accepeter_button_Click"/>
 
     </Grid>

@@ -25,6 +25,7 @@ namespace SGA
         public MainWindow()
         {
             Program.OuvrirFichier("Clients.txt");
+            Program.OuvrirFichier("Comptes.txt");
             InitializeComponent();
             double largeur_ecran = SystemParameters.PrimaryScreenWidth;
             double hauteur_ecran = SystemParameters.PrimaryScreenHeight;
@@ -86,6 +87,14 @@ namespace SGA
                     menuClient.Top = Application.Current.MainWindow.Top;
                     menuClient.Height = Application.Current.MainWindow.Height;
                     menuClient.Width = Application.Current.MainWindow.Width;
+                    ClientCourant.ClientActif = clientLogin;
+                    foreach (Compte item in DataGuichet.listeComptes)
+                    {
+                        if (item.NumeroDeClient == clientLogin.NIP)
+                        {
+                            ClientCourant.CompteActif.Add(item);
+                        }
+                    }
                     menuClient.ShowDialog();
                 }
             }

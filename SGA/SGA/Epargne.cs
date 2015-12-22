@@ -11,11 +11,12 @@ namespace SGA
         private DateTime _dernierRetrait;
 
         public decimal Frais { get; private set; }
+        public decimal Interet { get; private set; }
 
-        public Epargne(string numeroDeCompte, decimal balance, decimal frais) : base(numeroDeCompte, balance)
+        public Epargne(string numeroDeClient, string numeroDeCompte, decimal balance, decimal interet, decimal frais) : base(numeroDeClient, numeroDeCompte, balance)
         {
-            Frais = frais; 
+            Frais = frais;
+            Interet = interet;
         }
-
     }
 }

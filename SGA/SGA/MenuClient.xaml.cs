@@ -22,8 +22,6 @@ namespace SGA
         public MenuClient()
         {
             InitializeComponent();
-            //MainWindow.menuClient.Left = MainWindow.getPos("Left");
-            //MainWindow.menuClient.Top = MainWindow.getPos("Top");
         }
 
         private void button_Quitter(object sender, RoutedEventArgs e)

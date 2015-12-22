@@ -20,13 +20,12 @@ namespace SGA
     /// </summary>
     public partial class RetraitMontant : Window
     {
-
         decimal montantRetrait = 0;
-        
 
         public RetraitMontant()
         {
             InitializeComponent();
+            textBox.IsEnabled = false;
         }
 
         private void annuler_button_Click(object sender, RoutedEventArgs e)
@@ -36,61 +35,160 @@ namespace SGA
 
         private void accepeter_button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(SelectionTransaction.selectedTransac + " pour " + montantRetrait + " fait dans le compte " + SelectionCompte.selectedCompte);
+            Compte compteTransac = null;
+            bool fondInsufisant = false;
+            bool TransacReussi = false;
+            bool MontantValid = false;
+            if (textBox.Text != "")
+            {
+                try
+                {
+                    montantRetrait = Convert.ToDecimal(textBox.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Caractere non valide, veuillez entré un nombre");
+                }
+                finally
+                {
+                    montantRetrait = 0;
+                    textBox.Text = montantRetrait.ToString();
+                }
+            }
+            else montantRetrait = 0;
 
-            this.Close();
+            decimal laNouvelleBalance = 0;
+
+            if (SelectionCompte.selectedCompteString == "Cheque")
+            {
+                compteTransac = ClientCourant.compteCheque;
+            }
+            if (SelectionCompte.selectedCompteString == "Épargne")
+            {
+                compteTransac = ClientCourant.compteEpargne;
+            }
+
+
+            do
+                if ((montantRetrait % 10 == 0))
+                {
+                    if (montantRetrait >= 10 && montantRetrait < 1000)
+                    {
+                        if (compteTransac.Balance >= montantRetrait)
+                        {
+                            MontantValid = true;
+                        }
+                        else
+                        {
+                            int nouveauMontant = (int)((int)compteTransac.Balance/10)*10;
+                            MessageBoxResult result = MessageBox.Show("Fond insufisant le compte a une balance de " + compteTransac.Balance + "$\n Voulez vous modifier le montant pour " + nouveauMontant + "$", "Fond insufisant", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                            if (result == MessageBoxResult.Yes)
+                            {
+                                montantRetrait = nouveauMontant;
+                                textBox.Text = montantRetrait.ToString();
+                                MontantValid = true;
+                            }
+                            break;
+                        }
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Le montant de retrait doit etre entre 10$ et 1000$");
+                        break;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Le montant doit etre un multiple de 10");
+                    break;
+                }
+
+            while (!MontantValid);
+
+
+            if (MontantValid)
+            {
+                MessageBox.Show("on fait la transaction!!");
+            }
+
+
+            //changé montant a retiré pour total restant dans guichet
+            // Yes / no dialogue
+
+            if (TransacReussi)
+            {
+                MessageBox.Show(SelectionTransaction.selectedTransac + " pour " + montantRetrait + "$ fait dans le compte " + SelectionCompte.selectedCompteString + "\nLa balance de votre compte est de " + laNouvelleBalance + "$");
+                this.Close();
+            }
+
+            
 
         }
-
+        
         private void button_Click_10(object sender, RoutedEventArgs e)
         {
             montantRetrait = 10;
+            textBox.Text = montantRetrait.ToString();
         }
 
         private void button_Click_20(object sender, RoutedEventArgs e)
         {
             montantRetrait = 20;
+            textBox.Text = montantRetrait.ToString();
         }
 
         private void button_Click_30(object sender, RoutedEventArgs e)
         {
             montantRetrait = 30;
+            textBox.Text = montantRetrait.ToString();
         }
 
         private void button_Click_40(object sender, RoutedEventArgs e)
         {
             montantRetrait = 40;
+            textBox.Text = montantRetrait.ToString();
         }
 
         private void button_Click_50(object sender, RoutedEventArgs e)
         {
             montantRetrait = 50;
+            textBox.Text = montantRetrait.ToString();
         }
 
         private void button_Click_100(object sender, RoutedEventArgs e)
         {
             montantRetrait = 100;
+            textBox.Text = montantRetrait.ToString();
         }
 
         private void button_Click_200(object sender, RoutedEventArgs e)
         {
             montantRetrait = 200;
+            textBox.Text = montantRetrait.ToString();
         }
 
         private void button_Click_300(object sender, RoutedEventArgs e)
         {
             montantRetrait = 300;
+            textBox.Text = montantRetrait.ToString();
         }
 
         private void button_Click_400(object sender, RoutedEventArgs e)
         {
             montantRetrait = 400;
+            textBox.Text = montantRetrait.ToString();
         }
 
         private void button_Click_500(object sender, RoutedEventArgs e)
         {
             montantRetrait = 500;
+            textBox.Text = montantRetrait.ToString();
         }
 
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            textBox.IsEnabled = true;
+        }
     }
 }

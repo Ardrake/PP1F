@@ -22,6 +22,25 @@ namespace SGA
         public Retrait()
         {
             InitializeComponent();
+            bool chequebouton = false;
+            bool epargebouton = false;
+
+            foreach (Compte item in ClientCourant.CompteActif)
+            {
+                if (item.GetType() == typeof(Cheque))
+                {
+                    chequebouton = true;
+                    ClientCourant.compteCheque = item;
+                }
+                if (item.GetType() == typeof(Epargne))
+                {
+                    epargebouton = true;
+                    ClientCourant.compteEpargne = item;
+                }
+            }
+
+            buttonCheque.IsEnabled = chequebouton;
+            buttonEpargne.IsEnabled = epargebouton;
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -31,7 +50,7 @@ namespace SGA
 
         private void cheque_button_Click(object sender, RoutedEventArgs e)
         {
-            SelectionCompte.selectedCompte = "Cheque";
+            SelectionCompte.selectedCompteString = "Cheque";
             RetraitMontant menuRetraitMontant = new RetraitMontant();
             menuRetraitMontant.Left = Application.Current.MainWindow.Left;
             menuRetraitMontant.Top = Application.Current.MainWindow.Top;
@@ -43,7 +62,7 @@ namespace SGA
 
         private void eparge_button_Click(object sender, RoutedEventArgs e)
         {
-            SelectionCompte.selectedCompte = "Épargne";
+            SelectionCompte.selectedCompteString = "Épargne";
             RetraitMontant menuRetraitMontant = new RetraitMontant();
             menuRetraitMontant.Left = Application.Current.MainWindow.Left;
             menuRetraitMontant.Top = Application.Current.MainWindow.Top;

@@ -33,8 +33,22 @@ namespace SGA
                     string LeType = tab[0];
                     string LeClient = tab[1];
                     string LeNumeroDeCompte = tab[2];
-                    string LaBalance = tab[3];
+                    decimal LaBalance = decimal.Parse(tab[3]);
                     // Ajouter Compte dans tableau des comptes
+                    if (LeType == "E")
+                    {
+                        Epargne newEpargne = new Epargne(LeClient, LeNumeroDeCompte, LaBalance, (decimal)0.01, (decimal)1.25);
+                        DataGuichet.listeComptes.Add(newEpargne);
+                    }
+                    if (LeType == "C")
+                    {
+                        Cheque newCheque = new Cheque(LeClient, LeNumeroDeCompte, LaBalance, 0, (decimal)1.25);
+                        DataGuichet.listeComptes.Add(newCheque);
+                    }
+                    if (LeType == "B")
+                    {
+                        DataGuichet.totalGuichet = (int)LaBalance;
+                    }
                 }
 
 
