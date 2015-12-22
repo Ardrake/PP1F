@@ -10,15 +10,17 @@ namespace SGA
     {
         public DateTime Date { get; private set; }
         public TypeTransaction TypeTransaction { get; private set; }
+        public Compte TransactionCompte { get; private set; }
         public decimal Montant { get; private set; }
         public decimal Balance { get; private set; }
 
-        public Transaction(DateTime date, TypeTransaction transactionType, decimal montant, decimal balance)
+        public Transaction(DateTime date, TypeTransaction transactionType, Compte transactionCompte, decimal montant, decimal balance)
         {
             Date = date;
             Montant = montant;
             Balance = balance;
             TypeTransaction = transactionType;
+            TransactionCompte = transactionCompte;
 
             if (transactionType == TypeTransaction.Retrait)
             {
@@ -28,7 +30,7 @@ namespace SGA
 
         public override string ToString()
         {
-            return  string.Format("Date: {0}, Type: {1}, Montant: {2}, Balance {3}", Date, TypeTransaction, Montant, Balance);
+            return  string.Format("Date: {0}, Type: {1}, Compte: {2} Montant: {3}, Balance {4}", Date, TypeTransaction, TransactionCompte.NumeroDeCompte, Montant, Balance);
         }
 
     }

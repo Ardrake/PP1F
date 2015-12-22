@@ -21,6 +21,11 @@ namespace SGA
         public static string selectedTransac = "";
     }
 
+    public static class Compteur
+    {
+        public static int compteurTransac = 0;
+    }
+
     public static class ClientCourant
     {
         public static Client ClientActif = null;
@@ -35,7 +40,6 @@ namespace SGA
         public static int totalGuichet = 0;
         public static List<Compte> listeComptes = new List<Compte>();
         public static List<Client> listeClients = new List<Client>();
-        public static List<Transaction> listeTransactions = new List<Transaction>();
     }
     
 }

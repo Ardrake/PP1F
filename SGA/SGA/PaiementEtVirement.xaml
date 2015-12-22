@@ -7,15 +7,8 @@
         mc:Ignorable="d"
         Title="PaiementEtVirement" Height="350" Width="500">
     <Grid>
-        <ComboBox x:Name="compteSource" HorizontalAlignment="Left" Margin="46,124,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBoxItem Content="Chèque" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Épargne" HorizontalAlignment="Left" Width="118"/>
-        </ComboBox>
-        <ComboBox x:Name="compteCible" HorizontalAlignment="Left" Margin="211,124,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBoxItem Content="Chèque" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Épargne" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Facture" HorizontalAlignment="Left" Width="118"/>
-        </ComboBox>
+        <ComboBox x:Name="compteSource" HorizontalAlignment="Left" Margin="46,124,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="compteSource_SelectionChanged"  />
+        <ComboBox x:Name="compteCible" HorizontalAlignment="Left" Margin="211,124,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="montant" HorizontalAlignment="Left" Height="23" Margin="364,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"/>
         <Button x:Name="Annulé" Content="Annulé" HorizontalAlignment="Left" Margin="407,271,0,0" VerticalAlignment="Top" Width="75" Click="Annulé_Click"/>
         <Button x:Name="Accepter" Content="Accepté" HorizontalAlignment="Left" Margin="407,232,0,0" VerticalAlignment="Top" Width="75" Click="Accepter_Click"/>

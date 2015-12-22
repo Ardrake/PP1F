@@ -22,6 +22,8 @@ namespace SGA
         public PaiementEtVirement()
         {
             InitializeComponent();
+            compteSource.Items.Add("Épargne");
+            compteSource.Items.Add("Chèque");
         }
 
         private void Accepter_Click(object sender, RoutedEventArgs e)
@@ -32,6 +34,22 @@ namespace SGA
         private void Annulé_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void compteSource_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            compteCible.Items.Clear();
+            compteCible.Text = "";
+            ;
+            if (compteSource.SelectedItem.ToString() == "Chèque")
+            {
+                compteCible.Items.Add("Épargne");
+                compteCible.Items.Add("Facture");
+            }
+            if (compteSource.SelectedItem.ToString() == "Épargne")
+            {
+                compteCible.Items.Add("Chèque");
+            }
         }
     }
 }

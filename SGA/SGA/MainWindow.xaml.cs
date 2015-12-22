@@ -26,6 +26,8 @@ namespace SGA
         {
             Program.OuvrirFichier("Clients.txt");
             Program.OuvrirFichier("Comptes.txt");
+            
+
             InitializeComponent();
             double largeur_ecran = SystemParameters.PrimaryScreenWidth;
             double hauteur_ecran = SystemParameters.PrimaryScreenHeight;

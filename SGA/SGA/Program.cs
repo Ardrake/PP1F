@@ -9,6 +9,52 @@ namespace SGA
 {
     public class Program
     {
+
+        public static void EcrireTransac(Transaction transac)
+        {
+            string datetransac = DateTime.Now.ToShortDateString();
+            string fname = "transaction_" + datetransac + ".dat";
+            if (!File.Exists(fname))
+            {
+                using (StreamWriter sw = File.CreateText(fname))
+                {
+                    sw.WriteLine("Fichier des transaction pour le " + datetransac);
+                }
+            }
+
+            using (StreamWriter sw = File.AppendText(fname))
+            {
+                sw.WriteLine(DateTime.Now.ToShortDateString() + ";" + DateTime.Now.ToShortTimeString() + ";" + Compteur.compteurTransac + ";" + transac.TypeTransaction + ";" + transac.TransactionCompte.NumeroDeCompte + ";" + transac.Montant + ";" + transac.Balance);
+            }
+        }
+
+        public static int GetCompteurValue(string fname)
+        {
+            if (!File.Exists(fname))
+            {
+                return 1;
+            }
+            StreamReader sr = new StreamReader(fname);
+            string valeur = sr.ReadLine();
+            int compteur = int.Parse(valeur);
+            sr.Close();
+            return compteur;
+        }
+
+        public static void SetCompteurValue(string fname, int valeur)
+        {
+            if (File.Exists(fname))
+            {
+                File.Delete(fname);
+            }
+
+            using (StreamWriter sw = File.CreateText(fname))
+            {
+                sw.WriteLine(valeur);
+            }
+        }
+                
+
         public static void OuvrirFichier(string fname)
         {
             StreamReader sr = new StreamReader(fname);

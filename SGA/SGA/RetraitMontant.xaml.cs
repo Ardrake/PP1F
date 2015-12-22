@@ -36,26 +36,16 @@ namespace SGA
         private void accepeter_button_Click(object sender, RoutedEventArgs e)
         {
             Compte compteTransac = null;
-            bool fondInsufisant = false;
-            bool TransacReussi = false;
+            Transaction newTransac = null; 
             bool MontantValid = false;
-            if (textBox.Text != "")
+            try
             {
-                try
-                {
-                    montantRetrait = Convert.ToDecimal(textBox.Text);
-                }
-                catch
-                {
-                    MessageBox.Show("Caractere non valide, veuillez entré un nombre");
-                }
-                finally
-                {
-                    montantRetrait = 0;
-                    textBox.Text = montantRetrait.ToString();
-                }
+                montantRetrait = Convert.ToDecimal(textBox.Text);
             }
-            else montantRetrait = 0;
+            catch
+            {
+                MessageBox.Show("Caractere non valide, veuillez entré un nombre");
+            }
 
             decimal laNouvelleBalance = 0;
 
@@ -68,15 +58,28 @@ namespace SGA
                 compteTransac = ClientCourant.compteEpargne;
             }
 
-
             do
                 if ((montantRetrait % 10 == 0))
                 {
-                    if (montantRetrait >= 10 && montantRetrait < 1000)
+                    if (montantRetrait >= 10 && montantRetrait <= 1000)
                     {
                         if (compteTransac.Balance >= montantRetrait)
                         {
-                            MontantValid = true;
+                            if (DataGuichet.totalGuichet >= montantRetrait)
+                            {
+                                MontantValid = true;
+                            }
+                            else
+                            {
+                                MessageBoxResult result = MessageBox.Show("Fond insufisant dans le guichet une balance de " + DataGuichet.totalGuichet + "$\n Voulez vous modifier le montant pour " + DataGuichet.totalGuichet + "$", "Fond non disponible", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                                if (result == MessageBoxResult.Yes)
+                                {
+                                    montantRetrait = DataGuichet.totalGuichet;
+                                    textBox.Text = montantRetrait.ToString();
+                                    MontantValid = true;
+                                }
+                                break;
+                            }
                         }
                         else
                         {
@@ -90,7 +93,6 @@ namespace SGA
                             }
                             break;
                         }
-                        
                     }
                     else
                     {
@@ -103,26 +105,27 @@ namespace SGA
                     MessageBox.Show("Le montant doit etre un multiple de 10");
                     break;
                 }
-
             while (!MontantValid);
-
 
             if (MontantValid)
             {
-                MessageBox.Show("on fait la transaction!!");
-            }
+                if (SelectionTransaction.selectedTransac == "Retrait")
+                {
+                    compteTransac.Retrait(montantRetrait);
+                    newTransac = new Transaction(DateTime.Now, TypeTransaction.Retrait, compteTransac, montantRetrait, compteTransac.Balance);
+                }
+                if (SelectionTransaction.selectedTransac == "Dépot")
+                {
+                    compteTransac.Depot(montantRetrait);
+                    newTransac = new Transaction(DateTime.Now, TypeTransaction.Depot, compteTransac, montantRetrait, compteTransac.Balance);
+                }
 
-
-            //changé montant a retiré pour total restant dans guichet
-            // Yes / no dialogue
-
-            if (TransacReussi)
-            {
-                MessageBox.Show(SelectionTransaction.selectedTransac + " pour " + montantRetrait + "$ fait dans le compte " + SelectionCompte.selectedCompteString + "\nLa balance de votre compte est de " + laNouvelleBalance + "$");
+                Compteur.compteurTransac = Program.GetCompteurValue("compteurTransac.dat");
+                Program.EcrireTransac(newTransac);
+                Program.SetCompteurValue("compteurTransac.dat", Compteur.compteurTransac + 1);
+                MessageBox.Show(SelectionTransaction.selectedTransac + " pour " + montantRetrait + "$ fait dans le compte " + SelectionCompte.selectedCompteString + "\nLa balance de votre compte est de " + compteTransac.Balance + "$");
                 this.Close();
             }
-
-            
 
         }
         
