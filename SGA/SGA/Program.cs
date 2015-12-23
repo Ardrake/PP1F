@@ -9,7 +9,7 @@ namespace SGA
 {
     public class Program
     {
-
+        // Logic dépot guichet
         public static void DepotGuichet(int montant = 5000)
         {
             if (DataGuichet.totalGuichet + montant <= 20000)
@@ -18,7 +18,7 @@ namespace SGA
             } 
         }
 
-
+        // Ecrire la transaction dans le fichier transaction
         public static void EcrireTransac(Transaction transac)
         {
             string datetransac = DateTime.Now.ToShortDateString();
@@ -36,6 +36,7 @@ namespace SGA
             }
         }
 
+        //load la nouvelle valeur du compteur - pour les transaction
         public static int GetCompteurValue(string fname)
         {
             if (!File.Exists(fname))
@@ -49,7 +50,7 @@ namespace SGA
             return compteur;
         }
 
-
+        //save la valeur courante du compteur dans un fichier
         public static void SetCompteurValue(string fname, int valeur)
         {
             if (File.Exists(fname))
@@ -63,7 +64,7 @@ namespace SGA
             }
         }
 
-
+        //Sauvegarde du data quichet 
         public static void SauvegarderFichier(string fname)
         {
             
@@ -97,7 +98,7 @@ namespace SGA
             }
         }
 
-
+        // load le data guicher en memoire
         public static void OuvrirFichier(string fname)
         {
             StreamReader sr = new StreamReader(fname);

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGA"
         mc:Ignorable="d"
-        Title="PaiementEtVirement" Height="350" Width="500">
+        Title="Paiement de facture Virement de fonds" Height="350" Width="500">
     <Grid>
         <ComboBox x:Name="compteSource" HorizontalAlignment="Left" Margin="46,124,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="compteSource_SelectionChanged"  />
         <ComboBox x:Name="compteCible" HorizontalAlignment="Left" Margin="211,124,0,0" VerticalAlignment="Top" Width="120"/>

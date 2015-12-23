@@ -36,7 +36,6 @@ namespace SGA
                     ClientCourant.compteEpargne = item;
                 }
             }
-
         }
 
         private void Accepter_Click(object sender, RoutedEventArgs e)

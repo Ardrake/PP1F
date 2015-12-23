@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGA"
         mc:Ignorable="d"
-        Title="MenuClient" Height="350" Width="500">
+        Title="Bienvenue au Guichet Automatique CDI" Height="350" Width="500">
     <Grid>
         <Label x:Name="label" Content="Veuillez choisir une opération." HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top"/>
         <Button x:Name="retrait" Content="Retrait en espèces" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Width="147" Click="retrait_button_Click"/>

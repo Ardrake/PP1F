@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGA"
         mc:Ignorable="d"
-        Title="RetraitMontant" Height="350" Width="500">
+        Title="Choisir ou entrez un montant" Height="350" Width="500">
     <Grid>
         <Button x:Name="button" Content="10 $" HorizontalAlignment="Left" Margin="382,54,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right" Click="button_Click_10"/>
         <Button x:Name="button_Copy" Content="20 $" HorizontalAlignment="Left" Margin="382,91,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right" Click="button_Click_20"/>

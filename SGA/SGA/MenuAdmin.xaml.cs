@@ -32,12 +32,14 @@ namespace SGA
 
         private void button_MettreHorsService(object sender, RoutedEventArgs e)
         {
+            // sauvefarde des data avant de quitter
             Program.SauvegarderFichier("Comptes.txt");
             Environment.Exit(1);
         }
 
         private void button_Rapport(object sender, RoutedEventArgs e)
         {
+            // a complété - non requis pour travaux
             MessageBox.Show("Impression des Rapport");
         }
 

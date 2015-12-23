@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGA"
         mc:Ignorable="d"
-        Title="Retrait" Height="300" Width="500">
+        Title="Transaction client (retrait ou dépot)" Height="300" Width="500">
     <Grid>
         <Button x:Name="buttonCheque" Content="Cheque" HorizontalAlignment="Center" Margin="0,114,0,0" VerticalAlignment="Top" Width="100" Click="cheque_button_Click"/>
         <Button x:Name="buttonEpargne" Content="Épargne" HorizontalAlignment="Center" Margin="0,139,0,0" VerticalAlignment="Top" Width="100" Click="eparge_button_Click"/>

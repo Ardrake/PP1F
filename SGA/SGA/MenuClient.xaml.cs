@@ -26,6 +26,7 @@ namespace SGA
 
         private void button_Quitter(object sender, RoutedEventArgs e)
         {
+            //Sauvegrade du data avant de quitter
             Program.SauvegarderFichier("Comptes.txt");
             this.Close();
         }

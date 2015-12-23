@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGA"
         mc:Ignorable="d"
-        Title="MenuAdmin" Height="350" Width="500">
+        Title="Administration Guichet" Height="350" Width="500">
     <Grid>
         <Label x:Name="label" Content="Veuillez choisir une opération" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top"/>
         <Button x:Name="PaiementInteret" Content="Paiement des intérêts" HorizontalAlignment="Center" Margin="0,111,0,0" VerticalAlignment="Top" Width="185" Click="button_PaiementInteret"/>

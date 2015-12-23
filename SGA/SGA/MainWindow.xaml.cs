@@ -20,10 +20,11 @@ namespace SGA
     /// </summary>
     public partial class MainWindow : Window
     {
-       
 
+        int nbressaie = 0;
         public MainWindow()
         {
+
             // initialise les clients
             Program.OuvrirFichier("Clients.txt");
 
@@ -35,6 +36,7 @@ namespace SGA
             
 
             InitializeComponent();
+            // Calcul position de l'ecran - Centré
             double largeur_ecran = SystemParameters.PrimaryScreenWidth;
             double hauteur_ecran = SystemParameters.PrimaryScreenHeight;
             double largeur_main = Application.Current.MainWindow.Width;
@@ -70,14 +72,14 @@ namespace SGA
         private void button_Login(object sender, RoutedEventArgs e)
         {
             string nomClient = textboxNomClient.Text;
-            string nipClient = textboxPassword.Text;
+            string nipClient = textboxPassword.Password;
 
             Client clientLogin = DataGuichet.listeClients.Find(x => x.NomClient == nomClient);
             if (clientLogin == null)
             {
                 MessageBox.Show("Client non trouvé");
             }
-            else if (clientLogin.NIP == nipClient)
+            else if (clientLogin.NIP == textboxPassword.Password)
             {
                 if (clientLogin.NomClient == "Korben Dallas")
                 {
@@ -103,12 +105,22 @@ namespace SGA
                             ClientCourant.CompteActif.Add(item);
                         }
                     }
+                    nbressaie = 0;
                     menuClient.ShowDialog();
                 }
             }
             else
             {
-                MessageBox.Show("Login incorrect");
+                if (nbressaie > 3)
+                {
+                    MessageBox.Show("Nombre d'essaie avec erreur dépassez - veuillez re-essayer plus tard");
+                }
+                else
+                {
+                    MessageBox.Show("Login incorrect");
+                    nbressaie += 1;
+                }
+                
             }
         }
     }

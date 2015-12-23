@@ -6,26 +6,31 @@ using System.Threading.Tasks;
 
 namespace SGA
 {
+    // data type de transaction
     public enum TypeTransaction
     {
         Retrait, Depot, TransfertRetrait, TransfertDepot, Facture, Frais, Interet
     }
 
+    // sauvegarde objet selection du compte
     public static class SelectionCompte
     {
         public static string selectedCompteString = "";
     }
 
+    //sauvegarde objet selection du type de transaction
     public static class SelectionTransaction
     {
         public static string selectedTransac = "";
     }
 
+    // sauvegarde du compteur de transaction
     public static class Compteur
     {
         public static int compteurTransac = 0;
     }
 
+    // storage temporaire des datas client courant pour la transaction
     public static class ClientCourant
     {
         public static Client ClientActif = null;
@@ -34,7 +39,7 @@ namespace SGA
         public static Compte compteEpargne = null;
     }
 
-
+    // Data gucihet automatique
     public static class DataGuichet
     {
         public static int totalGuichet = 0;
